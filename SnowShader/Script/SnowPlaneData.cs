@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class SnowPlaneData : MonoBehaviour
@@ -10,6 +9,7 @@ public class SnowPlaneData : MonoBehaviour
 
     private void Awake()
     {
+        /*
         meshRenderer = GetComponent<MeshRenderer>();
         
         CopyHeightMat();
@@ -23,6 +23,7 @@ public class SnowPlaneData : MonoBehaviour
 
         meshRenderer.material = newRenderMat;
 
+        */
         void CopyRenderTexture()
         {
             var renderTextureCopy = new CustomRenderTexture
@@ -42,7 +43,6 @@ public class SnowPlaneData : MonoBehaviour
         }
         
         renderTexture.Initialize();
-        
     }
 
     public Material GetSnowHeightMaterial()

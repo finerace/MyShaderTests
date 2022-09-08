@@ -4,6 +4,7 @@ using UnityEngine;
 public class SnowBrush : MonoBehaviour
 {
     [SerializeField] private CustomRenderTexture snowHeightMapTexture;
+    [SerializeField] private Material snowHeightMapMat;
     private Camera mainCamera;
     [SerializeField] private float brushSize = 1;
 
@@ -26,8 +27,6 @@ public class SnowBrush : MonoBehaviour
     {
         var drawPosition = -Vector4.one;
 
-        Material snowHeightMapMat;
-        
         if (Input.GetMouseButton(0))
         {
             Ray checkRay = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -35,12 +34,8 @@ public class SnowBrush : MonoBehaviour
             if (Physics.Raycast(checkRay, out RaycastHit hit))
             {
                 drawPosition = hit.textureCoord;
-
-                snowHeightMapMat = hit.collider.gameObject.GetComponent<SnowPlaneData>().GetSnowHeightMaterial();
             }
-            else return;
         }
-        else return;
         
         snowHeightMapMat.SetVector(DrawPosition,drawPosition);
 
